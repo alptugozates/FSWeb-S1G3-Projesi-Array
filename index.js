@@ -40,9 +40,11 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
 */
 
 
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
+function kopyala(orijinalTatlar) {
+  return orijinalTatlar.slice();
 }
+const kopya = kopyala(orijinalTatlar);
+console.log(kopya);
 
 
 /* Görev 2:
@@ -55,10 +57,14 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 Örneğin: dizi25Cesit(orijinalTatlar) kodunuz düzgün çalışıyorsa true değerini döndürür.
 */
 
-
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
+function dizi25Cesitmi(orijinalTatlar) {
+if(orijinalTatlar.length === 25) {
+  return true;
+} else {
+  return false;
 }
+}
+
 
 
 /* Görev 3:
@@ -71,11 +77,20 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
    4. İşlev, yeni oluşan diziyi döndürmelidir
 
   Örneğin: cesitEkle(orijinalTatlar, "Kakule") işlevi doğru çalıştığında ["Kakule", "Muz",..."Vanilya"] şeklinde dönmelidir
+
+function cesitEkle(tatlar, yeniTat) {
+  tatlar.unshift(yeniTat);
+  return tatlar;
+}
+const tatlar = ['Muz', 'Vanilya', 'Çilek'];
+const yeniTat = 'Kakule';
+const guncelTatlar = cesitEkle(tatlar, yeniTat);
+console.log(guncelTatlar);
 */
 
-
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
+function cesitEkle(orijinalTatlar, yeniTat) {
+ orijinalTatlar.unshift(yeniTat);
+ return orijinalTatlar
 }
 
 
@@ -91,9 +106,9 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
    Örneğin: sonCesitiKaldir(orijinalTatlar) çalıştırıldığında ["Kakule", "Muz",..."Çilek"] döndürülür.
 */
 
-
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
+function sonCesitiKaldir(orijinalTatlar) {
+  orijinalTatlar.pop()
+  return orijinalTatlar;
 }
 
 
@@ -108,8 +123,12 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
 
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
+function indekstekiCesitiGetir(orijinalTatlar, istenilenIndeks) {
+for (let i = 0; i < orijinalTatlar.length; i++) {
+if (i === istenilenIndeks) {
+  return orijinalTatlar[i];
+}
+}
 }
 
 
@@ -128,8 +147,14 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
 
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreCesitCikar(orijinalTatlar, cikarilacakTat){
+ for (let i = 0; i < orijinalTatlar.length; i++) {
+  if (orijinalTatlar[i]=== cikarilacakTat) {
+    orijinalTatlar.splice(i, 1)
+
+  }
+ }
+ return orijinalTatlar;
 }
 
 
@@ -154,8 +179,15 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
 */
 
 
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreFiltrele(orijinalTatlar, istenenCesit) {
+  let yeniDizi = [];
+
+  for (let i = 0; i < orijinalTatlar.length; i++) {
+    if (orijinalTatlar[i].includes(istenenCesit)) {
+      yeniDizi.push(orijinalTatlar[i])
+    }
+  }
+  return yeniDizi;
 }
 
 
@@ -172,9 +204,14 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
    Örneğin: ortalamaKelimeSayisi(orijinalTatlar) 0 ile 2 arasında bir sayı döndürmelidir.
 */
 
-function ortalamaKelimeSayisi(/*kod buraya*/){
-  /*kod buraya*/
+function ortalamaKelimeSayisi(orijinalTatlar){
+  let toplam = 0;
+  for (let i = 0; i < orijinalTatlar.length; i++) {
+    toplam += orijinalTatlar[i].length;
+  }
+  return toplam / orijinalTatlar.length;
 }
+console.log (ortalamaKelimeSayisi(orijinalTatlar));
 
 
 /* ALIŞTIRMA 2:
